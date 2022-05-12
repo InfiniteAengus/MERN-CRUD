@@ -2,7 +2,7 @@ module.exports = {
   HOST: 'localhost',
   USER: 'root',
   PASSWORD: '',
-  DB: 'item_data',
+  DB: 'test_marketplace',
   dialect: 'mysql',
   pool: {
     //pool configuration

@@ -1,15 +1,12 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { Suspense } from 'react'
 
-import Home from './pages/Home'
-import AddItem from './pages/AddItem'
+import AppRoutes from './routes'
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/add-item' element={<AddItem />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <AppRoutes />
+    </Suspense>
   )
 }
 

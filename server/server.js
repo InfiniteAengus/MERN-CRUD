@@ -1,14 +1,13 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const PORT = 4000
+const express = require('./services/express')
+const routes = require('./routes')
+const db = require("./models");
 
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+const PORT = 8080
 
-require('./routes/routes.js')(app)
+const server = express(routes)
 
-app.listen(PORT, () => {
+db.sequelizeInstance.sync()
+
+server.listen(PORT, () => {
   console.log(`Server is running on Port: ${PORT}`)
 })
