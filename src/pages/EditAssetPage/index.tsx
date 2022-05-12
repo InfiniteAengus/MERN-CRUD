@@ -31,9 +31,7 @@ const EditAssetPage = () => {
 
   const { id } = useParams()
 
-  const onChange = (val: any) => {
-    console.log(val)
-  }
+  const onChange = (val: any) => {}
 
   const createAsset = async (values: any) => {
     if (!account) {

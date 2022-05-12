@@ -28,9 +28,7 @@ const CreateAssetPage = () => {
   const [file, setFile] = useState<any>({})
   const [loading, setLoading] = useState<boolean>(false)
 
-  const onChange = (val: any) => {
-    console.log(val)
-  }
+  const onChange = (val: any) => {}
 
   const createAsset = async (values: any) => {
     if (!account) {

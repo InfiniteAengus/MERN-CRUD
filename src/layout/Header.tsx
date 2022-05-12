@@ -1,3 +1,5 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useEthers, shortenAddress } from '@usedapp/core'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import Web3Modal from 'web3modal'
@@ -9,9 +11,14 @@ import {
   Box,
   Button,
 } from '@mui/material'
-import { Link } from 'react-router-dom'
+
+const links = [
+  { title: 'Explore', link: '/' },
+  { title: 'Create', link: '/create' },
+]
 
 const Header = () => {
+  const navigate = useNavigate()
   const { account, activate, deactivate } = useEthers()
 
   const handleConnect = async () => {
@@ -31,8 +38,6 @@ const Header = () => {
         },
       },
     }
-
-    console.log(account)
 
     if (!account) {
       const web3Modal = new Web3Modal({
@@ -69,8 +74,16 @@ const Header = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to='/'>Home</Link>
-            <Link to='/create'>Create</Link>
+            {links.map((link) => (
+              <Button
+                key={link.title}
+                onClick={() => {
+                  navigate(link.link)
+                }}
+              >
+                {link.title}
+              </Button>
+            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
